@@ -1,0 +1,23 @@
+Stage 1
+
+1.1. Selection of hardware.
+
+1.1.1. Approval of the budget (the problem is solved on your side)
+1.1.2. Hard disk and RAM (the analysis of the amount of data that will be loaded)
+1.1.3. Increase of the hard disk (to be specified in the service provider) optionally
+1.1.4. Server Failover.
+1.1.5. Dump the server at the service provider side.
+1.1.6. Choice of OS (I am leaning more towards Linux)
+1.1.7. Protection against DDOS (provided by the service provider)
+
+1.2. Selecting the database version. (With your agreement)
+1.2.1. Availability of documentation for installing and tuning the database (check).
+1.3. Installation of the database.
+1.3.1. Expanding the database.
+1.3.2. Creating admin's ultrasound (fixing paroley.root not use).
+1.4. Running the database.
+
+Stage 2
+2.1. Database Design
+
+Discuss later ...
