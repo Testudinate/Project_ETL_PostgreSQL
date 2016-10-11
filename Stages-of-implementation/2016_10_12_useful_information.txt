@@ -1,0 +1,34 @@
+1. FTP
+
+http://4ybakut2004.blogspot.ru/2014/08/ftp-ubuntu-linux.html
+https://toster.ru/q/64404
+
+2. HD V-data 
+
+http://linhunt.ru/os/linux/svobodnyj-i-zanyatyj-obem-diska-v-linux/
+
+du -shc /etc/*
+
+3. Create user on Linux
+
+Второй вариант: adduser
+Командой adduser пользоваться проще, т.к. достаточно будет лишь ответить на несколько вопросов:
+
+sudo adduser testuser
+
+Добавляется пользователь `testuser' ...
+Добавляется новая группа `testuser' (1001) ...
+Добавляется новый пользователь `testuser' (1001) в группу `testuser' ...
+Создаётся домашний каталог `/home/testuser' ...
+Копирование файлов из `/etc/skel' ...
+Введите новый пароль UNIX:
+Повторите новый пароль UNIX:
+passwd: пароль успешно обновлён
+Changing the user information for testuser
+Enter the new value, or press ENTER for the default
+Full Name []: testuser
+Room Number []:
+Work Phone []:
+Home Phone []:
+Other []:
+Данная информация корректна? [Д/н]
