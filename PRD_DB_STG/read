@@ -1,1 +1,30 @@
-test
+INSERT INTO "PRD_DB_DQ"."01_dq_create_path"(
+            src_change_dtm, status, prc_name, full_path, file_name)
+    VALUES (now(), 'DONE', 'GET', 'test', 'test');
+
+
+select now()::timestamptz;
+
+insert into "PRD_DB_DQ"."01_dq_create_path" (src_change_dtm, status, prc_name, full_path, file_name)
+select now(), 'DONE', 'GET', 'test', 'test'
+
+select * from "PRD_DB_DQ"."01_dq_create_path" 
+
+
+-- Table: "PRD_DB_DQ"."01_dq_create_path"
+
+-- DROP TABLE "PRD_DB_DQ"."01_dq_create_path";
+
+CREATE TABLE "PRD_DB_DQ"."01_dq_create_path"
+(
+  src_change_dtm timestamp,
+  status text,
+  prc_name text,
+  full_path text,
+  file_name text
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "PRD_DB_DQ"."01_dq_create_path"
+  OWNER TO postgres;
