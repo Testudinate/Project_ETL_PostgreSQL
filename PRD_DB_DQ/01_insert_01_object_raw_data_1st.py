@@ -1,6 +1,5 @@
 import psycopg2
 import csv
-import codecs
 
 connect = psycopg2.connect(database='PJ', user='postgres', host='localhost', password='postgres')
 
