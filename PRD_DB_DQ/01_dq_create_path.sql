@@ -4,11 +4,13 @@
 
 CREATE TABLE "PRD_DB_DQ"."01_dq_create_path"
 (
-  src_change_dtm timestamp with time zone[],
-  status character varying[],
-  prc_name character varying[],
-  full_path character varying[],
-  file_name character varying[]
+  src_change_dtm timestamp without time zone,
+  status text,
+  prc_name text,
+  full_path text,
+  file_name text,
+  upd_dtm timestamp without time zone,
+  prc_id smallint
 )
 WITH (
   OIDS=FALSE
