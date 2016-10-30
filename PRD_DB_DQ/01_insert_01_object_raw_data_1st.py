@@ -1,5 +1,6 @@
 import psycopg2
 import csv
+import codecs
 
 connect = psycopg2.connect(database='PJ', user='postgres', host='localhost', password='postgres')
 
@@ -12,7 +13,7 @@ k=0
 for row in cursor.fetchall():
     if row[0] > 0:
         cursor.execute('''SELECT full_path, file_name,row_id FROM "PRD_DB_DQ"."01_dq_create_path"
-               where prc_id = 1 and status='NONE' ''')
+               where prc_id = 1 and status='NONE' limit 1''')
         for rowi in cursor.fetchall():
             load_file = str(rowi[0]+"\\"+rowi[1])
             load_file = load_file.replace(' C:\\','C:\\')
