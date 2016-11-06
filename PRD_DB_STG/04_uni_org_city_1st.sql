@@ -4,9 +4,9 @@
 
 CREATE TABLE "PRD_DB_STG"."04_uni_org_city_1st"
 (
-  id_sq bigint[],
-  city character varying[],
-  sq_cnt integer[]
+  id_sq bigint,
+  city text,
+  sq_cnt integer
 )
 WITH (
   OIDS=FALSE
