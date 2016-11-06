@@ -24,6 +24,7 @@ for top, dir, files in os.walk('C:\Load\PROCESSING'):
                                             for top,dir,files in os.walk(text4):
                                                 for fl1 in files:
                                                     cursor.execute('''INSERT INTO "PRD_DB_DQ"."01_dq_create_path" \
-                                                    VALUES (now(),'NONE','01_insert_05_object_radiuses_2nd.py',' '''+ top +"','"+fl1+"')")
+                                                    (src_change_dtm, status, prc_name, upd_dtm,prc_id, full_path, file_name)\
+                                                    VALUES (now(),'NONE','01_insert_05_object_radiuses_2nd.py',now(),14,' '''+ top +"','"+fl1+"')")
 connect.commit()
 connect.close()
