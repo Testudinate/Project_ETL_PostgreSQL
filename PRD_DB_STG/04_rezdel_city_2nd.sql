@@ -4,9 +4,10 @@
 
 CREATE TABLE "PRD_DB_STG"."04_rezdel_city_2nd"
 (
-  city character varying[],
-  id integer[],
-  cnt integer[]
+  city text,
+  id integer,
+  cnt integer,
+  file_name text
 )
 WITH (
   OIDS=FALSE
