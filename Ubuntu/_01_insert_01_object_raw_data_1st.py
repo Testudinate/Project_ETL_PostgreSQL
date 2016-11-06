@@ -1,8 +1,11 @@
+#-*- coding: utf-8 -*-
+#!/usr/bin python3.5
+
 import psycopg2
 import csv
 import codecs
 
-connect = psycopg2.connect(database='pj', user='admin_etl', host='46.4.68.109', password='Bc6f5201_etl')
+connect = psycopg2.connect(database='pj', user='admin_etl', host='localhost', password='Bc6f5201_etl')
 
 cursor = connect.cursor()
 
@@ -15,16 +18,16 @@ for row in cursor.fetchall():
         cursor.execute('''SELECT full_path, file_name,row_id FROM "prd_db_dq"."01_dq_create_path"
                where prc_id = 1 and status='NONE' limit 1''')
         for rowi in cursor.fetchall():
-            load_file = str(rowi[0]+"\\"+rowi[1])
-            load_file = load_file.replace(' C:\\','C:\\')
+            load_file = str(rowi[0]+"/"+rowi[1])
+            load_file = load_file.replace(' /','/')
             s_00 = '''update "prd_db_dq"."01_dq_create_path" set status ='''
             s_01 = "'"+str('PROCESSING') + "' where row_id="+ str(rowi[2])
             sql_code_0 = s_00 + s_01
             cursor.execute(sql_code_0)
             connect.commit()
-            with open(load_file, 'r') as f:
-                csv_data = csv.reader(f,delimiter=';') # читаем данные из файла и задаем разделитель ';'
-                next(csv_data) # игнорируем 1 строку, содержащую описание столбцов в файле
+            with codecs.open(load_file, 'r',encoding='utf-8',errors='ignore') as f:
+                csv_data = csv.reader(f,delimiter=';') 
+                next(csv_data)
                 k=k+1
                 for row2 in csv_data:
                     #print(row2[0])
