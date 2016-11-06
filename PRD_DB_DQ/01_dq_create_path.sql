@@ -3,7 +3,8 @@
 -- DROP TABLE "PRD_DB_DQ"."01_dq_create_path";
 
 CREATE TABLE "PRD_DB_DQ"."01_dq_create_path"
-( row_id bigint,
+(
+  row_id bigserial NOT NULL,
   src_change_dtm timestamp without time zone,
   status text,
   prc_name text,
