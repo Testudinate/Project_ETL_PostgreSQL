@@ -4,7 +4,7 @@
 import os
 import psycopg2
 
-#46.4.68.109
+
 connect = psycopg2.connect(database='pj', user='admin_etl', host='localhost', password='Bc6f5201_etl')
 cursor = connect.cursor()
 
