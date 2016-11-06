@@ -23,6 +23,7 @@ for top, dir, files in os.walk('C:\Load\PROCESSING'):
                                         for fl1 in files:
                                             print(fl1,top)
                                             cursor.execute('''INSERT INTO "PRD_DB_DQ"."01_dq_create_path" \
-                                            VALUES (now(),'NONE','01_insert_04_uni_org_city_1st.py',' '''+ top +"','"+fl1+"')")
+                                           (src_change_dtm, status, prc_name, upd_dtm,prc_id, full_path, file_name)\
+                                            VALUES (now(),'NONE','01_insert_04_uni_org_city_1st.py',now(),11,' '''+ top +"','"+fl1+"')")
 connect.commit()
 connect.close()
