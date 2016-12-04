@@ -1,11 +1,11 @@
--- Table: "PRD_DB_STG"."06_flat_city"
+-- Table: prd_db_stg."06_flat_city"
 
--- DROP TABLE "PRD_DB_STG"."06_flat_city";
+-- DROP TABLE prd_db_stg."06_flat_city";
 
-CREATE TABLE "PRD_DB_STG"."06_flat_city"
+CREATE TABLE prd_db_stg."06_flat_city"
 (
+  city integer,
   id_sq bigint,
-  city text,
   "0-100" integer,
   "100-200" integer,
   "200-300" integer,
@@ -34,31 +34,10 @@ CREATE TABLE "PRD_DB_STG"."06_flat_city"
   "2600-2700" integer,
   "2700-2800" integer,
   "2800-2900" integer,
-  "2900-3000" integer,
-  "3000-3100" integer,
-  "3100-3200" integer,
-  "3200-3300" integer,
-  "3300-3400" integer,
-  "3400-3500" integer,
-  "3500-3600" integer,
-  "3600-3700" integer,
-  "3700-3800" integer,
-  "3800-3900" integer,
-  "3900-4000" integer,
-  "4000-4100" integer,
-  "4100-4200" integer,
-  "4200-4300" integer,
-  "4300-4400" integer,
-  "4400-4500" integer,
-  "4500-4600" integer,
-  "4600-4700" integer,
-  "4700-4800" integer,
-  "4800-4900" integer,
-  "4900-5000" integer
+  "2900-3000" integer
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "PRD_DB_STG"."06_flat_city"
-  OWNER TO postgres;
-
+ALTER TABLE prd_db_stg."06_flat_city"
+  OWNER TO admin_etl;
