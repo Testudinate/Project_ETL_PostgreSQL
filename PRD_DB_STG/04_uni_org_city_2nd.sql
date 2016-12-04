@@ -1,16 +1,16 @@
--- Table: "PRD_DB_STG"."04_uni_org_city_2nd"
+-- Table: prd_db_stg."04_uni_org_city_2nd"
 
--- DROP TABLE "PRD_DB_STG"."04_uni_org_city_2nd";
+-- DROP TABLE prd_db_stg."04_uni_org_city_2nd";
 
-CREATE TABLE "PRD_DB_STG"."04_uni_org_city_2nd"
+CREATE TABLE prd_db_stg."04_uni_org_city_2nd"
 (
+  city integer,
   id_sq bigint,
-  city text,
   type_name text,
   sq_cnt integer
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "PRD_DB_STG"."04_uni_org_city_2nd"
-  OWNER TO postgres;
+ALTER TABLE prd_db_stg."04_uni_org_city_2nd"
+  OWNER TO admin_etl;
