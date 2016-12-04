@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+#!/usr/bin python3.5
 import os
 import psycopg2
 
-connect = psycopg2.connect(database='PJ', user='postgres', host='localhost', password='postgres')
+connect = psycopg2.connect(database='PJ', user='admin_etl', host='localhost', password='Bc6f5201_etl')
 cursor = connect.cursor()
 
-for top, dir, files in os.walk('C:\Load\PROCESSING'):
+for top, dir, files in os.walk('/home/admin_ftp/input_data/processing'):
     for fd in dir:
         if fd =='01_Objects_raw_data':
             text = os.path.join(top,fd)
