@@ -1,11 +1,11 @@
--- Table: "PRD_DB_STG"."05_object_radiuses_rubrica_1st"
+-- Table: prd_db_stg."05_object_radiuses_rubrica_1st"
 
--- DROP TABLE "PRD_DB_STG"."05_object_radiuses_rubrica_1st";
+-- DROP TABLE prd_db_stg."05_object_radiuses_rubrica_1st";
 
-CREATE TABLE "PRD_DB_STG"."05_object_radiuses_rubrica_1st"
+CREATE TABLE prd_db_stg."05_object_radiuses_rubrica_1st"
 (
+  city integer,
   id_sq bigint,
-  city text,
   "0-100" integer,
   "100-200" integer,
   "200-300" integer,
@@ -34,10 +34,11 @@ CREATE TABLE "PRD_DB_STG"."05_object_radiuses_rubrica_1st"
   "2600-2700" integer,
   "2700-2800" integer,
   "2800-2900" integer,
-  "2900-3000" integer
+  "2900-3000" integer,
+  file_name text
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "PRD_DB_STG"."05_object_radiuses_rubrica_1st"
-  OWNER TO postgres;
+ALTER TABLE prd_db_stg."05_object_radiuses_rubrica_1st"
+  OWNER TO admin_etl;
