@@ -1,12 +1,11 @@
+-- Table: prd_db_stg."07_stops_city"
 
--- Table: "PRD_DB_STG"."07_stops_city"
+-- DROP TABLE prd_db_stg."07_stops_city";
 
--- DROP TABLE "PRD_DB_STG"."07_stops_city";
-
-CREATE TABLE "PRD_DB_STG"."07_stops_city"
+CREATE TABLE prd_db_stg."07_stops_city"
 (
+  city integer,
   id_sq bigint,
-  city text,
   "0-100" integer,
   "100-200" integer,
   "200-300" integer,
@@ -25,10 +24,12 @@ CREATE TABLE "PRD_DB_STG"."07_stops_city"
   "1600-1700" integer,
   "1700-1800" integer,
   "1800-1900" integer,
-  "1900-2000" integer
+  "1900-2000" integer,
+  "2000-2100" integer,
+  "2100-2200" integer
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "PRD_DB_STG"."07_stops_city"
-  OWNER TO postgres;
+ALTER TABLE prd_db_stg."07_stops_city"
+  OWNER TO admin_etl;
