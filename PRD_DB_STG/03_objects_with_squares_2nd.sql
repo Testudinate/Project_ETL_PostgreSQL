@@ -1,9 +1,10 @@
--- Table: "PRD_DB_STG"."03_objects_with_squares_2nd"
+-- Table: prd_db_stg."03_objects_with_squares_2nd"
 
--- DROP TABLE "PRD_DB_STG"."03_objects_with_squares_2nd";
+-- DROP TABLE prd_db_stg."03_objects_with_squares_2nd";
 
-CREATE TABLE "PRD_DB_STG"."03_objects_with_squares_2nd"
+CREATE TABLE prd_db_stg."03_objects_with_squares_2nd"
 (
+  city integer,
   num text,
   name text,
   type_name text,
@@ -34,5 +35,5 @@ CREATE TABLE "PRD_DB_STG"."03_objects_with_squares_2nd"
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "PRD_DB_STG"."03_objects_with_squares_2nd"
-  OWNER TO postgres;
+ALTER TABLE prd_db_stg."03_objects_with_squares_2nd"
+  OWNER TO admin_etl;
