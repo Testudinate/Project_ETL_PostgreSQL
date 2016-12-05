@@ -1,0 +1,4 @@
+
+Права файлам WRE + исполнение:
+
+find . -type f -name '*.py' -exec chmod 777 {} \;
