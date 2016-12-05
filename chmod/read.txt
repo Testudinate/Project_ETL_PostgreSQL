@@ -2,3 +2,5 @@
 Права файлам WRE + исполнение:
 
 find . -type f -name '*.py' -exec chmod 777 {} \;
+
+Источник: http://docs.mirocow.com/doku.php?id=chmod
