@@ -1,0 +1,78 @@
+
+Поиск файлов с реальном сканированием.
+
+Команда find выполняет просмотр файловой системы для поиска файла, что делает этот инструмент медленным, но эффективным. Для поиска по имени обязательно нужно указывать ключ -name Пример:
+
+find -name filename.txt
+
+По умолчанию find производит поиск рекурсивно в текущем каталоге.
+type / типы
+
+    -type f
+    -type d
+
+Параметры
+
+    В параметре поставляет найденные значения -exec
+
+    {}
+
+        Пример:
+
+        find ./ -name "*.php" -exec rm {} \;
+
+Смена кодировки у множества файлов
+
+for i in *; do iconv -f windows-1251 -t utf-8 "$i" >tmp; mv tmp "$i"; done
+
+find . \( -name '*.php' -o -name '*.inc' \) -print
+  or
+find . -name '*.php' -o -name '*.inc'
+
+find . -name "*.php" | while read i; do iconv -f windows-1251 -t utf-8 "$i" >tmp; mv tmp "$i"; done
+
+find . -name "*.php" -o -name "*.inc" -o -name "*.module" | while read i; do iconv -f windows-1251 -t utf-8 "$i" >tmp; mv tmp "$i"; done
+
+Смена прав у файлов и каталогов
+Смена прав у каталогов
+
+find . -type d -exec chmod 755 {} \;
+
+Эта команда рекурсивно пройдется по текущему (точка ".") каталогу и всем его подкаталогам и изменит права на 755 только у каталогов (-type d)
+
+find . -type f -exec chmod 644 {} \;
+
+всем файлам - 644
+Смена прав у файлов
+
+find . -type f -name '*.htm*' -exec chmod 644 {} \;
+
+Определенным файлам
+Рекурсивное удаление по маске
+
+Пример рекурсивного удаления всех git репозиториев
+
+find . -type d -name '.git' -exec rm -R -f {} \;
+
+Поиск необходимого контента в файлах
+
+find ./ -type f -print -name *.php -exec grep 'eval' --color=auto {} \;
+
+Поиск бэкдоров или вирусов на сайте
+Вычислить размер папки, без подпапок
+
+find . -maxdepth 0 -type d -mindepth 0 -exec du -hs {} \;
+
+Удалить большое количество файлов
+
+Иногда при удление файлов командой rm, возникает сообщение об ошибке "/bin/rm: Argument list too long." Ниже след команда позволит ее избежать
+
+find . -type f -name "thumb_*" -print | xargs rm
+find ./ -type f -name "thumb_*" -exec rm -f {} \;
+find . -maxdepth 1 -name 'thumb_*' -exec rm -f {} \;
+find . -maxdepth 1 -name '*.js' -exec rm -f {} \;
+
+Удалить файлы созданные позднее 3 дней
+
+find /tmp -mtime +3 -name 'tmp-*' -exec rm -Rf -- {} \;
+
