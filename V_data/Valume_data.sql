@@ -6,4 +6,6 @@ SELECT nspname || '.' || relname AS "relation",
     AND C.relkind <> 'i'
     AND nspname !~ '^pg_toast'
   ORDER BY pg_total_relation_size(C.oid) DESC
-  LIMIT 20;
+  LIMIT 50;
+
+http://blog.bsdmaster.com/2012/04/postgresql.html
