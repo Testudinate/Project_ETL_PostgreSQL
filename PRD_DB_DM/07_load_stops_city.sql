@@ -72,6 +72,9 @@ city ,
 from prd_db_stg."07_stops_city"
 where city = v_city;
 
+delete from prd_db_stg."07_stops_city"
+where city = v_city;
+
 v_flag := 1;
 return v_flag;
 else 
