@@ -1,11 +1,7 @@
---select prd_db_dm."03_load_objects_with_squares_1st"(21);
-
--- Function: prd_db_dm."03_load_objects_with_squares_1st"(integer)
-
--- DROP FUNCTION prd_db_dm."03_load_objects_with_squares_1st"(integer);
 
 CREATE OR REPLACE FUNCTION prd_db_dm."03_load_objects_with_squares_1st"(in_city integer)
-RETURNS integer AS $$
+  RETURNS integer AS
+$BODY$
 DECLARE v_flag integer;
         v_city integer;
 BEGIN
@@ -13,6 +9,9 @@ BEGIN
 select in_city into v_city;
 
 if v_city>=1 then 
+
+delete from prd_db_dm."03_objects_with_squares_1st" 
+where city = in_city and day_id = now()::date;
 
 insert into prd_db_dm."03_objects_with_squares_1st" (
   city,
@@ -42,7 +41,8 @@ insert into prd_db_dm."03_objects_with_squares_1st" (
   y1 ,
   y2 ,
   y3 ,
-  y4 
+  y4 ,
+  day_id 
 ) 
 select 
   a.city,
@@ -72,9 +72,12 @@ select
   a.y1 ,
   a.y2 ,
   a.y3 ,
-  a.y4  
+  a.y4 , 
+  now()
 from prd_db_stg."03_objects_with_squares_1st" a
 where a.city = v_city;
+
+delete from prd_db_stg."03_objects_with_squares_1st";
 
 v_flag := 1;
 return v_flag;
@@ -92,7 +95,8 @@ return v_flag;
 end;
 
 END;
-$$ LANGUAGE plpgsql VOLATILE
+$BODY$
+  LANGUAGE plpgsql VOLATILE
   COST 100;
 ALTER FUNCTION prd_db_dm."03_load_objects_with_squares_1st"(integer)
   OWNER TO admin_etl;
