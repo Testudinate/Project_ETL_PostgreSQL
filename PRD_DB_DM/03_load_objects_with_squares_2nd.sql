@@ -1,16 +1,14 @@
-
---select prd_db_dm."03_load_objects_with_squares_1st"(21);
-
---select count(*) from prd_db_dm."03_objects_with_squares_2nd";
+alter table prd_db_dm."03_objects_with_squares_2nd" add day_id date;
 
 select prd_db_dm."03_load_objects_with_squares_2nd"(21);
 
--- Function: prd_db_dm."03_load_objects_with_squares_1st"(integer)
+-- Function: prd_db_dm."03_load_objects_with_squares_2nd"(integer)
 
--- DROP FUNCTION prd_db_dm."03_load_objects_with_squares_1st"(integer);
+-- DROP FUNCTION prd_db_dm."03_load_objects_with_squares_2nd"(integer);
 
 CREATE OR REPLACE FUNCTION prd_db_dm."03_load_objects_with_squares_2nd"(in_city integer)
-RETURNS integer AS $$
+  RETURNS integer AS
+$BODY$
 DECLARE v_flag integer;
         v_city integer;
 BEGIN
@@ -18,6 +16,9 @@ BEGIN
 select in_city into v_city;
 
 if v_city>=1 then 
+
+delete from prd_db_dm."03_objects_with_squares_2nd" 
+where city = in_city and day_id = now()::date;
 
 insert into prd_db_dm."03_objects_with_squares_2nd" (
   city ,
@@ -46,7 +47,8 @@ insert into prd_db_dm."03_objects_with_squares_2nd" (
   y1 ,
   y2 ,
   y3 ,
-  y4 
+  y4 , 
+  day_id  
 ) 
 select 
   city ,
@@ -75,9 +77,12 @@ select
   y1 ,
   y2 ,
   y3 ,
-  y4 
+  y4 ,
+  now()
 from prd_db_stg."03_objects_with_squares_2nd" 
 where city = v_city;
+
+delete from prd_db_stg."03_objects_with_squares_2nd";
 
 v_flag := 1;
 return v_flag;
@@ -95,7 +100,8 @@ return v_flag;
 end;
 
 END;
-$$ LANGUAGE plpgsql VOLATILE
+$BODY$
+  LANGUAGE plpgsql VOLATILE
   COST 100;
 ALTER FUNCTION prd_db_dm."03_load_objects_with_squares_2nd"(integer)
-OWNER TO admin_etl;
+  OWNER TO admin_etl;
